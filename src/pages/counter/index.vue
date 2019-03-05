@@ -1,6 +1,7 @@
 <template>
   <div class="counter-warp">
     <p>Vuex counter：{{ count }}</p>
+    <!-- <p>Vuex counter：{{ myStore.getters.getCount }}</p> -->
     <p>
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
@@ -15,9 +16,13 @@ import store from './store'
 export default {
   computed: {
     count () {
-      return store.state.count
+      // return store.state.count
+      return store.getters.getCount
     }
   },
+  // onReady() {
+  //   this.myStore = store
+  // },
   methods: {
     increment () {
       store.commit('increment')

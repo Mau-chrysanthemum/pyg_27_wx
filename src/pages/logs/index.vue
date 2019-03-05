@@ -1,6 +1,6 @@
 <template>
   <div>
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
+      <swiper v-if="imgUrls.length > 0" :indicator-dots="imgUrls.length > 0" circular>
       <block v-for="(item, index) in imgUrls" :key="index" >
         <swiper-item>
           <image :src="item" mode="scaleToFill"></image>
@@ -49,6 +49,13 @@ export default {
 </script>
 
 <style>
+swiper{
+  height: 400rpx;
+}
+swiper image{
+  width:100%;
+  height:100%;
+}
 .log-list {
   display: flex;
   flex-direction: column;

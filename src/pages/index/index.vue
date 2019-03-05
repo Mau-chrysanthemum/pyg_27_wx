@@ -1,9 +1,21 @@
 <template>
-  <div @click="clickHandle">
+  <view>
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+    <div
+      class="userinfo"
+      @click="bindViewTap"
+    >
+      <img
+        class="userinfo-avatar"
+        v-if="userInfo.avatarUrl"
+        :src="userInfo.avatarUrl"
+        background-size="cover"
+      />
+      <img
+        class="userinfo-avatar"
+        src="/static/images/user.png"
+        background-size="cover"
+      />
 
       <div class="userinfo-nickname">
         <card :text="userInfo.nickName"></card>
@@ -17,27 +29,48 @@
     </div>
 
     <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
+      <input
+        type="text"
+        class="form-control"
+        :value="motto"
+        placeholder="v-model"
+      />
+      <input
+        type="text"
+        class="form-control"
+        v-model="motto"
+        placeholder="v-model"
+      />
+      <input
+        type="text"
+        class="form-control"
+        v-model.lazy="motto"
+        placeholder="v-model.lazy"
+      />
     </form>
 
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+    <!-- <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a> -->
+    <!-- <navigator
+      url="/pages/counter/main">我要去Vuex那个页面
+    </navigator> -->
+    <view @click="goToPage('/pages/counter/main')">我要去Vuex那个页面666</view>
+
+    <!-- <view data-url="xxx" bindtap="goToPage2">我要去Vuex那个页面777</view> -->
 
     <div class="all">
-        <div class="left">
-        </div>
-        <div class="right">
-        </div>
+      <div class="left">
+      </div>
+      <div class="right">
+      </div>
     </div>
-  </div>
+  </view>
 </template>
 
 <script>
 import card from '@/components/card'
 
 export default {
-  data () {
+  data() {
     return {
       motto: 'Hello miniprograme',
       userInfo: {
@@ -52,7 +85,7 @@ export default {
   },
 
   methods: {
-    bindViewTap () {
+    bindViewTap() {
       const url = '../logs/main'
       if (mpvuePlatform === 'wx') {
         mpvue.switchTab({ url })
@@ -60,13 +93,22 @@ export default {
         mpvue.navigateTo({ url })
       }
     },
-    clickHandle (ev) {
+    clickHandle(ev) {
       console.log('clickHandle:', ev)
       // throw {message: 'custom test'}
+    },
+    goToPage(url) {
+      // console.log(url)
+      // 编程式导航跳转 mpvue === wx
+      wx.navigateTo({
+        url: url
+      })
+    },
+    goToPage2() {
+      console.log('2222222222')
     }
   },
-
-  created () {
+  created() {
     // let app = getApp()
   }
 }
@@ -100,27 +142,27 @@ export default {
   margin-bottom: 5px;
   border: 1px solid #ccc;
 }
-.all{
-  width:7.5rem;
-  height:1rem;
-  background-color:blue;
+.all {
+  width: 7.5rem;
+  height: 1rem;
+  background-color: blue;
 }
-.all:after{
-  display:block;
-  content:'';
-  clear:both;
+.all:after {
+  display: block;
+  content: '';
+  clear: both;
 }
-.left{
-  float:left;
-  width:3rem;
-  height:1rem;
-  background-color:red;
+.left {
+  float: left;
+  width: 3rem;
+  height: 1rem;
+  background-color: red;
 }
 
-.right{
-  float:left;
-  width:4.5rem;
-  height:1rem;
-  background-color:green;
+.right {
+  float: left;
+  width: 4.5rem;
+  height: 1rem;
+  background-color: green;
 }
 </style>

@@ -30,21 +30,15 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
+<style lang="less">
+@import "../static/styles/iconfont.less";
+page {
+  background-color: #f4f4f4;
+  font-size: 24rpx;
+  color: #333;
 }
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
+text{
+  color:  #999;
+  font-size: 12px;
 }
 </style>
